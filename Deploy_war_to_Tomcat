@@ -13,18 +13,4 @@ node{
          sh 'scp -o StrictHostKeyChecking=no target/*.war ec2-user@172.31.29.249:/opt/tomcat8/webapps/'
       }
    }
-   stage('Email Notification'){
-      mail bcc: '', body: '''Hi Welcome to jenkins email alerts
-      Thanks
-      Gowtham''', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'gowthambabu4113@gmail.com'
-   }
-   stage('Slack Notification'){
-       slackSend baseUrl: 'https://hooks.slack.com/services/',
-       channel: '#jenkins-pipeline-demo',
-       color: 'good', 
-       message: 'Welcome to Jenkins, Slack!', 
-       teamDomain: 'javahomecloud',
-       tokenCredentialId: 'slack-demo'
-   }
-
 }
