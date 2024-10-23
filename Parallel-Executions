@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+ parallel firstBranch: {
+        stage('one'){
+           git url: 'http://github.com/repo/my-app', branch: 'master123' 
+        }
+    }, secondBranch: {
+       stage('Two'){
+           git url: 'http://github.com/repo/my-app', branch: 'feature-1'  
+       }
+    },
+    failFast: true
+}
